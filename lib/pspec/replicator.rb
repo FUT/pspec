@@ -1,7 +1,5 @@
 module Pspec
   module Replicator
-    DATABASE_NAME = ActiveRecord::Base.configurations['test']['database']
-
     class << self
       def optimal_processors_count
         Parallel.processor_count - 1
@@ -9,21 +7,28 @@ module Pspec
 
       def copy
         optimal_processors_count.times do |n|
-          drop_database n
-          create_database n
+          drop database, n
+          create database, n
         end
 
-        puts "Database #{DATABASE_NAME}#{number} was created"
+        puts "Database #{database}#{number} was created"
       end
 
       private
-      def drop_database(number)
-        ActiveRecord::Base.connection.execute %(drop database if exists "#{DATABASE_NAME}#{number}")
+      def drop(database, number)
+        ActiveRecord::Base.connection.execute %(drop database if exists "#{database}#{number}")
       end
 
-      def create_database(number)
-        owner = ActiveRecord::Base.configurations['test']['username']
-        ActiveRecord::Base.connection.execute %(create database "#{DATABASE_NAME}#{number}" with template "#{DATABASE_NAME}" owner "#{owner}")
+      def create(database, number)
+        ActiveRecord::Base.connection.execute %(create database "#{database}#{number}" with template "#{database}" owner "#{owner}")
+      end
+
+      def database
+        ActiveRecord::Base.configurations['test']['database']
+      end
+
+      def owner
+        ActiveRecord::Base.configurations['test']['username']
       end
     end
   end
