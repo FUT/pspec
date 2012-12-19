@@ -5,7 +5,7 @@ module Pspec
         Parallel.processor_count - 1
       end
 
-      def copy
+      def replicate
         optimal_processors_count.times do |n|
           drop database, n
           create database, n
