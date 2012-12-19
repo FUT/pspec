@@ -12,7 +12,7 @@ module Pspec
           drop_database number
           create_database number
 
-          puts "Database #{database number} was created"
+          Rails.logger.info "Database #{database number} was created"
         end
       end
 

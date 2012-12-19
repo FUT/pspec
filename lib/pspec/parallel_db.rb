@@ -2,7 +2,7 @@ module Pspec
   module ParallelDb
     class << self
       def prepare
-        puts "Optimal processors count was determined as #{Replicator.optimal_processors_count}"
+        Rails.logger.info "Optimal processors count was determined as #{Replicator.optimal_processors_count}"
 
         prepare_database
 
@@ -14,7 +14,7 @@ module Pspec
         Rake::Task['db:migrate'].invoke
         Rake::Task['db:test:prepare'].invoke
 
-        puts 'Main test database was prepared'
+        Rails.logger.info 'Main test database was prepared'
       end
     end
   end
