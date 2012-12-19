@@ -2,7 +2,7 @@ module Pspec
   module Replicator
     class << self
       def optimal_processors_count
-        Parallel.processor_count - 1
+        [Parallel.processor_count - 1, 1].max
       end
 
       def replicate
