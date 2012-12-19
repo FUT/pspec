@@ -6,7 +6,7 @@ module Pspec
       end
 
       def replicate
-        optimal_processors_count.times do |index|
+        (optimal_processors_count - 1).times do |index|
           number = index + 2
 
           drop_database number
