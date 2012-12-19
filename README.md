@@ -4,7 +4,7 @@ pspec
 This gem depends on [parallel_tests](https://github.com/grosser/parallel_tests). Check it's page for installation
 instructions.
 
-Gem `pspec` determines *optimal processors count* (**OPC**) as
+Gem `pspec` determines *optimal processors count* ( **OPC** ) as
 *processors count* - 1
 
 Install
