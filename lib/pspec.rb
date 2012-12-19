@@ -1,3 +1,3 @@
 require 'pspec/replicator'
 require 'pspec/parallel_db'
-require 'railtie'
+require 'pspec/railtie'
