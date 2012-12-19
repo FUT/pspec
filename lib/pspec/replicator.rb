@@ -6,20 +6,22 @@ module Pspec
       end
 
       def replicate
-        optimal_processors_count.times do |number|
-          drop database, number
-          create database, number
+        optimal_processors_count.times do |index|
+          number = index + 2
+
+          drop_database number
+          create_database number
 
           puts "Database #{database number} was created"
         end
       end
 
       private
-      def drop(database, number)
+      def drop_database(number)
         ActiveRecord::Base.connection.execute %(drop database if exists "#{database number}")
       end
 
-      def create(database, number)
+      def create_database(number)
         ActiveRecord::Base.connection.execute %(create database "#{database number}" with template "#{database}" owner "#{owner}")
       end
 
