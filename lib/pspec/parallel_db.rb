@@ -2,7 +2,7 @@ module Pspec
   module ParallelDb
     class << self
       def prepare
-        puts "Optimal processors count was determined as #{optimal_processors_count}"
+        puts "Optimal processors count was determined as #{Replicator.optimal_processors_count}"
 
         prepare_database
 
