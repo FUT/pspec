@@ -17,7 +17,6 @@ namespace :pspec do
     test_env!
     Rake::Task['parallel:spec'].invoke Pspec::Replicator.optimal_processors_count
   end
-
-  task default: [:run]
 end
 
+task pspec: ['pspec:prepare', 'pspec:run']
