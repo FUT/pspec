@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.files        = `git ls-files`.split("\n")
   s.require_path = 'lib'
 
-  s.add_dependency 'activerecord', '~> 3.1'
+  s.add_dependency 'activerecord', '>= 3.1'
   s.add_dependency 'rack'
   s.add_dependency 'parallel_tests'
 
